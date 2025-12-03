@@ -26,7 +26,7 @@ namespace rpm12
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             timer = new DispatcherTimer();
-            timer.Tick += Timer_Tick;
+            //timer.Tick += Timer_Tick; не работает
             timer.Interval = new TimeSpan(0, 0, 1, 0);
             timer.IsEnabled = true;
         }
