@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:rpm12"
         mc:Ignorable="d"
-        Title="Практическая работа №12 - Создание интерфейса приложения" Height="550" Width="800" ResizeMode="CanMinimize" Loaded="Window_Loaded" Foreground="Black" Background="#FFE2F4FF">
+        Title="Практическая работа №12 - Создание интерфейса приложения" Height="550" Width="800" ResizeMode="CanMinimize" Loaded="Window_Loaded" Foreground="Black" Background="#FFE2F4FF" Icon="/design_measure_rulers_geometry_drawing_ruler_square_icon_267255.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -23,13 +23,14 @@
         </Grid.RowDefinitions>
         <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="Инструменты">
-                <MenuItem Header="Расчитать"></MenuItem>
-                <MenuItem Header="Очистить все поля"></MenuItem>
+                <MenuItem x:Name="miCalc" Header="Расчитать первое задание" Icon="✅" Click="btnCalc_Click" ToolTip="Это кнопка рассчета" />
+                <MenuItem x:Name="miCalc1" Header="Расчитать второе задание" Icon="✅"  ToolTip="Это кнопка рассчета" Click="Button_Click" />
+                <MenuItem x:Name="miClean" Header="Очистить все поля" Icon="🔄" ToolTip="Кнопка очищает все поля программы" Click="miClean_Click"></MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Выйти"></MenuItem>
+                <MenuItem x:Name="miExit" Header="Выйти" Icon="🚪" ToolTip="Это кнопка выхода" Click="btnExit_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="Справка">
-                <MenuItem Header="О программе"></MenuItem>
+                <MenuItem x:Name="miAbout" Header="О программе" Icon="📄" ToolTip="Кнопка выводит информацию о программе" Click="btnAbout_Click"></MenuItem>
             </MenuItem>
         </Menu>
         <TabControl Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="5,5,5,5" Grid.Row="1">
@@ -44,23 +45,30 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <GroupBox Header=" --Исходные данные-- " Margin="5,5,5,5" Grid.RowSpan="3">
+                    <GroupBox Header=" --Исходные данные-- " Margin="5,5,10,5" Grid.RowSpan="3">
                         <StackPanel Margin="5,5,5,5">
                             <Label Content="Сторона a:" Margin="0,5,0,0"/>
-                            <TextBox x:Name="tbA" TextWrapping="Wrap" Width="200" Margin="0,5,0,0"/>
+                            <TextBox x:Name="tbA" TextWrapping="Wrap" Width="200" Margin="0,5,0,0" TextChanged="tbA_TextChanged"/>
                             <Label Content="Сторона b:" Margin="0,5,0,0"/>
-                            <TextBox x:Name="tbB" TextWrapping="Wrap"  Width="200" Margin="0,5,0,0"/>
+                            <TextBox x:Name="tbB" TextWrapping="Wrap"  Width="200" Margin="0,5,0,0" TextChanged="tbB_TextChanged"/>
                             <Label Content="Сторона c:" Margin="0,5,0,0"/>
-                            <TextBox x:Name="tbC" TextWrapping="Wrap" Width="200" Margin="0,5,0,0"/>
+                            <TextBox x:Name="tbC" TextWrapping="Wrap" Width="200" Margin="0,5,0,0" TextChanged="tbC_TextChanged"/>
                         </StackPanel>
+                        <GroupBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="cmCalc" Header="Рассчитать" Click="btnCalc_Click"></MenuItem>
+                                <MenuItem x:Name="cmClean" Header="Очистить все поля" Click="miClean_Click"></MenuItem>
+                                <MenuItem x:Name="cmExit" Header="Выйти" Click="btnExit_Click"></MenuItem>
+                            </ContextMenu>
+                        </GroupBox.ContextMenu>
                     </GroupBox>
                     <GroupBox Grid.Column="1" Header=" --Результат-- " Margin="5,5,5,5" Grid.RowSpan="3">
                         <StackPanel Margin="5,5,5,5">
                             <Label Content="Объём:" Margin="0,5,0,0"/>
-                            <TextBox x:Name="tbVolume" TextWrapping="Wrap" Width="200" Margin="0,5,0,0"/>
+                            <TextBox x:Name="tbVolume" TextWrapping="Wrap" Width="200" Margin="0,5,0,0" IsReadOnly="True"/>
                             <Label Content="Площадь:" Margin="0,5,0,0"/>
-                            <TextBox x:Name="tbArea" TextWrapping="Wrap" Width="200" Margin="0,5,0,0"/>
-                            <Button x:Name="btnCalc" Content="Рассчитать" Width="200" Margin="0,10,0,0"/>
+                            <TextBox x:Name="tbArea" TextWrapping="Wrap" Width="200" Margin="0,5,0,0" IsReadOnly="True"/>
+                            <Button x:Name="btnCalc" Content="Рассчитать" Width="200" Margin="0,10,0,0" Click="btnCalc_Click" ToolTip="Это кнопка рассчета"/>
                         </StackPanel>
                     </GroupBox>
                 </Grid>
@@ -68,16 +76,37 @@
             <TabItem Header="Сумма и произведение чисел">
                 <Grid Background="#FFF7FCFF">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="0*"></ColumnDefinition>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <GroupBox Header=" --Исходные данные-- " Margin="5,5,5,5" Grid.RowSpan="3"/>
-                    <GroupBox Grid.Column="1" Header=" --Результат-- " Margin="5,5,5,5" Grid.RowSpan="3"/>
+                    <GroupBox Header=" --Исходные данные-- " Margin="5,5,10,5" Grid.RowSpan="3" Grid.Column="1">
+                        <StackPanel>
+                            <Label Content="Двузначное число:"/>
+                            <TextBox x:Name="tbValue" TextWrapping="Wrap"  Width="200" Margin="0,5,0,0" TextChanged="tbValue_TextChanged"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Grid.Column="2" Header=" --Результат-- " Margin="5,5,5,5" Grid.RowSpan="3">
+                        <StackPanel>
+                            <Label Content="Сумма цифр:" Margin="0,5,0,0"/>
+                            <TextBox x:Name="tbSum" TextWrapping="Wrap"  Width="200" Margin="0,5,0,0" IsReadOnly="True"/>
+                            <Label Content="Произведение цифр:" Margin="0,5,0,0"/>
+                            <TextBox x:Name="tbMult" TextWrapping="Wrap"  Width="200" Margin="0,5,0,0" IsReadOnly="True"/>
+                            <Button x:Name="tbRaz" Content="Рассчитать" Margin="0,5,0,0" Width="200" Click="Button_Click"/>
+                        </StackPanel>
+                        <GroupBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="cmCalc1" Header="Рассчитать" Click="btnCalc_Click"></MenuItem>
+                                <MenuItem x:Name="cmClean1" Header="Очистить все поля" Click="miClean_Click"></MenuItem>
+                                <MenuItem x:Name="cmExit1" Header="Выйти" Click="btnExit_Click"></MenuItem>
+                            </ContextMenu>
+                        </GroupBox.ContextMenu>
+                    </GroupBox>
                 </Grid>
             </TabItem>
         </TabControl>
@@ -89,8 +118,8 @@
             <TextBlock x:Name="data" Text="21.01.2025" Margin="5,0,5,0"/>
         </StatusBar>
         <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="btnAbout" Content="О программе" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Width="100"/>
-            <Button x:Name="btnExit" Content="Выйти" VerticalAlignment="Center" Margin="10,10,10,10" Width="60"/>
+            <Button x:Name="btnAbout" Content="О программе" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Width="100" ToolTip="Кнопка выводит информацию о программе" Click="btnAbout_Click"/>
+            <Button x:Name="btnExit" Content="Выйти" VerticalAlignment="Center" Margin="10,10,10,10" Width="60" ToolTip="Это кнопка выхода" Click="btnExit_Click"/>
         </StackPanel>
 
     </Grid>

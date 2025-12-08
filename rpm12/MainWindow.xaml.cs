@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace rpm12
 {
@@ -20,22 +21,103 @@ namespace rpm12
         public MainWindow()
         {
             InitializeComponent();
-            
+            tbA.Focus();
+            tbValue.Focus();
         }
         DispatcherTimer timer;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             timer = new DispatcherTimer();
-            timer.Tick += Timer_Tick;
-            timer.Interval = new TimeSpan(0, 0, 1, 0);
+            timer.Tick += Timer;
+            timer.Interval = new TimeSpan(0, 0, 0, 0);
             timer.IsEnabled = true;
         }
-
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Timer(object sender, EventArgs e)
         {
-            DateTime d = DateTime.Now;
-            time.Text = d.ToString("HH:mm");
-            data.Text = d.ToString("dd.MM.yyyy");
+            DateTime dt = DateTime.Now;
+            time.Text = dt.ToString("HH:mm");
+            data.Text = dt.ToString("dd.MM.yyyy");
+        }
+
+        private void btnCalc_Click(object sender, RoutedEventArgs e)
+        {
+           bool a, b,c;
+            a = int.TryParse(tbA.Text, out int A);
+            b = int.TryParse(tbB.Text, out int B);
+            c = int.TryParse(tbB.Text, out int C);
+            if (a && b && c)
+            {
+                int V = A*B*C;
+                int S = 2 * (A * B + A * C + B * C);
+                tbArea.Text=S.ToString();
+                tbVolume.Text=V.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Неверное введенные данные. Пожалуйста, проверьте еще раз!");
+            }
+            
+        }
+
+        private void btnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Практическая работа №12 \r\nСоздание интерфейса приложения. \r\n5. Реализовать расчет задачи: \r\n• Даны длины ребер a, b, c прямоугольного параллелепипеда.\r\n Найти его объем V = a·b·c и площадь поверхности S = 2·(a·b + b·c + a·c). \r\n• Дано двузначное число. Найти сумму и произведение его цифр.");
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void miClean_Click(object sender, RoutedEventArgs e)
+        {
+            tbVolume.Clear();
+            tbArea.Clear();
+            tbA.Clear();
+            tbB.Clear();
+            tbC.Clear();
+        }
+
+        private void tbA_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tbVolume.Clear();
+            tbArea.Clear();
+        }
+
+        private void tbB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tbVolume.Clear();
+            tbArea.Clear();
+        }
+
+        private void tbC_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tbVolume.Clear();
+            tbArea.Clear();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool f1 = int.TryParse(tbValue.Text, out int value);
+            if (f1 && value>9 && value<100)
+            {
+                int ed = value % 10;
+                int dec = value/10;
+                int sum = ed + dec;
+                int mult = ed * dec;
+                tbSum.Text = sum.ToString();
+                tbMult.Text = mult.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Ошибка ввода данных! Проверьте, число должно быть двузначным больше 9 и меньше 100.");
+            }
+        }
+
+        private void tbValue_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tbMult.Clear();
+            tbSum.Clear();
         }
     }
 }

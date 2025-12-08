@@ -9,7 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="design_measure_rulers_geometry_drawing_ruler_square_icon_267255.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="icon\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="design_measure_rulers_geometry_drawing_ruler_square_icon_267255.png" />
   </ItemGroup>
 
 </Project>
