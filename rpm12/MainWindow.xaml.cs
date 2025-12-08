@@ -26,15 +26,15 @@ namespace rpm12
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             timer = new DispatcherTimer();
-            //timer.Tick += Timer_Tick; не работает
+            timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 1, 0);
             timer.IsEnabled = true;
         }
 
-        private void Timer_Tick(object sender, RoutedEventArgs e)
+        private void Timer_Tick(object? sender, EventArgs e)
         {
             DateTime d = DateTime.Now;
-            time.Text = d.ToString("HH:mm:");
+            time.Text = d.ToString("HH:mm");
             data.Text = d.ToString("dd.MM.yyyy");
         }
     }
