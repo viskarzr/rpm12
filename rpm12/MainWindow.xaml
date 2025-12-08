@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:rpm12"
         mc:Ignorable="d"
-        Title="Практическая работа №12 - Создание интерфейса приложения" Height="650" Width="800" ResizeMode="CanMinimize" Loaded="Window_Loaded" Foreground="Black" Background="#FFE2F4FF">
+        Title="Практическая работа №12 - Создание интерфейса приложения" Height="550" Width="800" ResizeMode="CanMinimize" Loaded="Window_Loaded" Foreground="Black" Background="#FFE2F4FF">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -22,12 +22,14 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <MenuItem Header="dfdfs">
-                <MenuItem Header=" fadadad"></MenuItem>
-                <MenuItem Header="ddasdsad"></MenuItem>
+            <MenuItem Header="Инструменты">
+                <MenuItem Header="Расчитать"></MenuItem>
+                <MenuItem Header="Очистить все поля"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Выйти"></MenuItem>
             </MenuItem>
-            <MenuItem Header="dadqewe">
-                <MenuItem Header="dasdsadsa"></MenuItem>
+            <MenuItem Header="Справка">
+                <MenuItem Header="О программе"></MenuItem>
             </MenuItem>
         </Menu>
         <TabControl Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="5,5,5,5" Grid.Row="1">
@@ -42,8 +44,25 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <GroupBox Header=" --Исходные данные-- " Margin="5,5,5,5" Grid.RowSpan="3"/>
-                    <GroupBox Grid.Column="1" Header=" --Результат-- " Margin="5,5,5,5" Grid.RowSpan="3"/>
+                    <GroupBox Header=" --Исходные данные-- " Margin="5,5,5,5" Grid.RowSpan="3">
+                        <StackPanel Margin="5,5,5,5">
+                            <Label Content="Сторона a:" Margin="0,5,0,0"/>
+                            <TextBox x:Name="tbA" TextWrapping="Wrap" Width="200" Margin="0,5,0,0"/>
+                            <Label Content="Сторона b:" Margin="0,5,0,0"/>
+                            <TextBox x:Name="tbB" TextWrapping="Wrap"  Width="200" Margin="0,5,0,0"/>
+                            <Label Content="Сторона c:" Margin="0,5,0,0"/>
+                            <TextBox x:Name="tbC" TextWrapping="Wrap" Width="200" Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1" Header=" --Результат-- " Margin="5,5,5,5" Grid.RowSpan="3">
+                        <StackPanel Margin="5,5,5,5">
+                            <Label Content="Объём:" Margin="0,5,0,0"/>
+                            <TextBox x:Name="tbVolume" TextWrapping="Wrap" Width="200" Margin="0,5,0,0"/>
+                            <Label Content="Площадь:" Margin="0,5,0,0"/>
+                            <TextBox x:Name="tbArea" TextWrapping="Wrap" Width="200" Margin="0,5,0,0"/>
+                            <Button x:Name="btnCalc" Content="Рассчитать" Width="200" Margin="0,10,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Сумма и произведение чисел">
@@ -57,6 +76,8 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
+                    <GroupBox Header=" --Исходные данные-- " Margin="5,5,5,5" Grid.RowSpan="3"/>
+                    <GroupBox Grid.Column="1" Header=" --Результат-- " Margin="5,5,5,5" Grid.RowSpan="3"/>
                 </Grid>
             </TabItem>
         </TabControl>
@@ -68,8 +89,8 @@
             <TextBlock x:Name="data" Text="21.01.2025" Margin="5,0,5,0"/>
         </StatusBar>
         <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="О программе" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Width="100"/>
-            <Button Content="Выйти" VerticalAlignment="Center" Margin="10,10,10,10" Width="60"/>
+            <Button x:Name="btnAbout" Content="О программе" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Width="100"/>
+            <Button x:Name="btnExit" Content="Выйти" VerticalAlignment="Center" Margin="10,10,10,10" Width="60"/>
         </StackPanel>
 
     </Grid>

@@ -31,7 +31,7 @@ namespace rpm12
             timer.IsEnabled = true;
         }
 
-        private void Timer_Tick(object? sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             DateTime d = DateTime.Now;
             time.Text = d.ToString("HH:mm");
