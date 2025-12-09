@@ -25,6 +25,9 @@ namespace rpm12
             tbValue.Focus();
         }
         DispatcherTimer timer;
+        /// <summary>
+        /// создане таймера для строки состояния
+        /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             timer = new DispatcherTimer();
@@ -39,6 +42,9 @@ namespace rpm12
             data.Text = dt.ToString("dd.MM.yyyy");
         }
 
+        /// <summary>
+        /// кнопка расчета первого задания
+        /// </summary>
         private void btnCalc_Click(object sender, RoutedEventArgs e)
         {
            bool a, b,c;
@@ -59,16 +65,25 @@ namespace rpm12
             
         }
 
+        /// <summary>
+        /// кнопка о программе
+        /// </summary>
         private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Практическая работа №12 \r\nСоздание интерфейса приложения. \r\n5. Реализовать расчет задачи: \r\n• Даны длины ребер a, b, c прямоугольного параллелепипеда.\r\n Найти его объем V = a·b·c и площадь поверхности S = 2·(a·b + b·c + a·c). \r\n• Дано двузначное число. Найти сумму и произведение его цифр.\r\n Выполнила:\r\nстудентка гр. ИСП-31 Кирюшова В. ");
         }
 
+        /// <summary>
+        /// кнопка выхода
+        /// </summary>
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// кнопка в меню для очистки всех полей
+        /// </summary>
         private void miClean_Click(object sender, RoutedEventArgs e)
         {
             tbVolume.Clear();
@@ -78,24 +93,36 @@ namespace rpm12
             tbC.Clear();
         }
 
+        /// <summary>
+        /// Событие, которое очищает пола ответов при изменении поля "сторона а"
+        /// </summary>
         private void tbA_TextChanged(object sender, TextChangedEventArgs e)
         {
             tbVolume.Clear();
             tbArea.Clear();
         }
 
+        /// <summary>
+        /// Событие, которое очищает пола ответов при изменении поля "сторона b"
+        /// </summary>
         private void tbB_TextChanged(object sender, TextChangedEventArgs e)
         {
             tbVolume.Clear();
             tbArea.Clear();
         }
 
+        /// <summary>
+        /// Событие, которое очищает пола ответов при изменении поля "сторона c"
+        /// </summary>
         private void tbC_TextChanged(object sender, TextChangedEventArgs e)
         {
             tbVolume.Clear();
             tbArea.Clear();
         }
 
+        /// <summary>
+        /// кнопка расчета второго задания
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             bool f1 = int.TryParse(tbValue.Text, out int value);
@@ -113,7 +140,9 @@ namespace rpm12
                 MessageBox.Show("Ошибка ввода данных! Проверьте, число должно быть двузначным больше 9 и меньше 100.");
             }
         }
-
+        /// <summary>
+        /// Событие, которое очищает пола ответов при изменении поля "двузначное число"
+        /// </summary>
         private void tbValue_TextChanged(object sender, TextChangedEventArgs e)
         {
             tbMult.Clear();
