@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:rpm12"
         mc:Ignorable="d"
-        Title="Практическая работа №12 - Создание интерфейса приложения" Height="550" Width="800" ResizeMode="CanMinimize" Loaded="Window_Loaded" Foreground="Black" Background="#FFE2F4FF" Icon="/design_measure_rulers_geometry_drawing_ruler_square_icon_267255.png">
+        Title="Практическая работа №12 - Создание интерфейса приложения" Height="550" Width="800" ResizeMode="CanMinimize" Loaded="Window_Loaded" Foreground="Black" Background="#e9967a" Icon="/design_measure_rulers_geometry_drawing_ruler_square_icon_267255.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -35,17 +35,18 @@
         </Menu>
         <TabControl Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="5,5,5,5" Grid.Row="1">
             <TabItem Header="Объём и площадь паралелепипеда" >
-                <Grid Background="#FFF7FCFF">
+                <Grid Background="#ffbcad">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="16*"></ColumnDefinition>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="49*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <GroupBox Header=" --Исходные данные-- " Margin="5,5,10,5" Grid.RowSpan="3">
+                    <GroupBox Header=" --Исходные данные-- " Margin="5,5,10,5" Grid.RowSpan="3" Grid.ColumnSpan="2">
                         <StackPanel Margin="5,5,5,5">
                             <Label Content="Сторона a:" Margin="0,5,0,0"/>
                             <TextBox x:Name="tbA" TextWrapping="Wrap" Width="200" Margin="0,5,0,0" TextChanged="tbA_TextChanged"/>
@@ -62,7 +63,7 @@
                             </ContextMenu>
                         </GroupBox.ContextMenu>
                     </GroupBox>
-                    <GroupBox Grid.Column="1" Header=" --Результат-- " Margin="5,5,5,5" Grid.RowSpan="3">
+                    <GroupBox Grid.Column="2" Header=" --Результат-- " Margin="5,5,5,5" Grid.RowSpan="3">
                         <StackPanel Margin="5,5,5,5">
                             <Label Content="Объём:" Margin="0,5,0,0"/>
                             <TextBox x:Name="tbVolume" TextWrapping="Wrap" Width="200" Margin="0,5,0,0" IsReadOnly="True"/>
@@ -74,7 +75,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Сумма и произведение чисел">
-                <Grid Background="#FFF7FCFF">
+                <Grid Background="#ffbcad">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0*"></ColumnDefinition>
                         <ColumnDefinition/>
