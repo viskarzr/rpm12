@@ -53,10 +53,9 @@ namespace rpm12
             c = int.TryParse(tbB.Text, out int C);
             if (a && b && c)
             {
-                int V = A*B*C;
-                int S = 2 * (A * B + A * C + B * C);
-                tbArea.Text=S.ToString();
-                tbVolume.Text=V.ToString();
+               
+                tbArea.Text=CalcArea(A,B,C).ToString();
+                tbVolume.Text=CalcVol(A,B,C).ToString();
             }
             else
             {
@@ -128,12 +127,9 @@ namespace rpm12
             bool f1 = int.TryParse(tbValue.Text, out int value);
             if (f1 && value>9 && value<100)
             {
-                int ed = value % 10;
-                int dec = value/10;
-                int sum = ed + dec;
-                int mult = ed * dec;
-                tbSum.Text = sum.ToString();
-                tbMult.Text = mult.ToString();
+               
+                tbSum.Text = SumVal(value).ToString();
+                tbMult.Text = MultVal(value).ToString();
             }
             else
             {
@@ -147,6 +143,58 @@ namespace rpm12
         {
             tbMult.Clear();
             tbSum.Clear();
+        }
+
+        /// <summary>
+        /// Метод для расчёта площади
+        /// </summary>
+        /// <param name="a">сторона параллелепипеда</param>
+        /// <param name="b">сторона параллелепипеда</param>
+        /// <param name="c">сторона параллелепипеда</param>
+        /// <returns>площадь параллелепипеда</returns>
+        private int CalcArea(int a, int b, int c)
+        {
+            int S = 2*(a*b + a*c + b*c);
+            return S;
+        }
+
+        /// <summary>
+        /// метод для расчёта объёма
+        /// </summary>
+        /// <param name="a">сторона параллелепипеда</param>
+        /// <param name="b">сторона параллелепипеда</param>
+        /// <param name="c">сторона параллелепипеда</param>
+        /// <returns>площадь параллелепипеда</returns>
+        private int CalcVol(int a, int b, int c)
+        {
+            int V = a * b * c;
+            return V;
+        }
+
+        /// <summary>
+        /// метод для расчета суммы цифр
+        /// </summary>
+        /// <param name="value">двузначное число</param>
+        /// <returns>сумма цифр двузначного числа</returns>
+        private int SumVal(int value)
+        {
+            int ed = value % 10;
+            int dec = value / 10;
+            int sum = ed + dec;
+            return sum;
+        }
+
+        /// <summary>
+        /// метод для расчета произведения цифр
+        /// </summary>
+        /// <param name="value">двузначное число</param>
+        /// <returns>произведение цифр двузначного числа</returns>
+        private int MultVal(int value)
+        {
+            int ed = value % 10;
+            int dec = value / 10;
+            int mult = ed * dec;
+            return mult;
         }
     }
 }
