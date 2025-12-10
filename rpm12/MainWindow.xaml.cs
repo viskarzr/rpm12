@@ -50,7 +50,7 @@ namespace rpm12
            bool a, b,c;
             a = int.TryParse(tbA.Text, out int A);
             b = int.TryParse(tbB.Text, out int B);
-            c = int.TryParse(tbB.Text, out int C);
+            c = int.TryParse(tbC.Text, out int C);
             if (a && b && c)
             {
                
